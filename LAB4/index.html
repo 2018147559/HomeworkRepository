@@ -16,19 +16,20 @@
 			const start = counter;
 			const end = start + 1;
 			counter = end + 1;
-			fetch('product.json?postId=${start}&postId=${end}')
+			//?postId=${start}&postId=${end}
+			fetch('product.json')
 			.then(response => response.json())
-			.then(posts => {
-				posts.forEach(add_post);
+			.then((json) => {
+				console.log(json);
 			})
 
 		};
 		//Add a new post with a given content
-		function add_post(comments){
+		function add_post(product){
 			//creat new post
 			const post = document.createElement('div');
 			post.className = 'post';
-			post.innerHTML = comments.body;
+			post.innerHTML = product.price;
 			document.querySelector('#posts').append(post)
 			
 		}
