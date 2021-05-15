@@ -19,8 +19,8 @@
 			//?postId=${start}&postId=${end}
 			fetch('product.json')
 			.then(response => response.json())
-			.then((json) => {
-				console.log(json);
+			.then(posts => {
+				posts.forEach(add_post);
 			})
 
 		};
