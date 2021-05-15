@@ -1,65 +1,65 @@
 [
 {
-  "postId" : 1
+  "postId" : 1,
   "name" : "cool cat",
   "price" : 102,
-  "image" : coolcat.jpg
+  "image" : "coolcat.jpg",
+  "type" : "cat"
+},
+  {
+    "postId": 2,
+    "name": "hot dog",
+    "price": 100,
+    "image": "hotdog.jpg",
+    "type": "dog"
+  },
+{
+  "postId" : 3,
+  "name" : "cool cat",
+  "price" : 102,
+  "image" : "coolcat.jpg",
   "type" : "cat"
 },
 {
-  "postId" : 2
+  "postId" : 4,
   "name" : "hot dog",
   "price" : 100,
-  "image" : hotdog.jpg
+  "image" : "hotdog.jpg",
   "type" : "dog"
-
+},
 {
-  "postId" : 3
+  "postId" : 5,
   "name" : "cool cat",
   "price" : 102,
-  "image" : coolcat.jpg
+  "image" : "coolcat.jpg",
   "type" : "cat"
 },
 {
-  "postId" : 4
+  "postId" : 6,
   "name" : "hot dog",
   "price" : 100,
-  "image" : hotdog.jpg
+  "image" : "hotdog.jpg",
   "type" : "dog"
 },
 {
-  "postId" : 5
+  "postId" : 7,
   "name" : "cool cat",
   "price" : 102,
-  "image" : coolcat.jpg
+  "image" : "coolcat.jpg",
   "type" : "cat"
 },
 {
-  "postId" : 6
+  "postId" : 8,
   "name" : "hot dog",
   "price" : 100,
-  "image" : hotdog.jpg
+  "image" : "hotdog.jpg",
   "type" : "dog"
 },
 {
-  "postId" : 7
+  "postId" : 9,
   "name" : "cool cat",
   "price" : 102,
-  "image" : coolcat.jpg
-  "type" : "cat"
-},
-{
-  "postId" : 8
-  "name" : "hot dog",
-  "price" : 100,
-  "image" : hotdog.jpg
-  "type" : "dog"
-},
-{
-  "postId" : 9
-  "name" : "cool cat",
-  "price" : 102,
-  "image" : coolcat.jpg
+  "image" : "coolcat.jpg",
   "type" : "cat"
 },
 
