@@ -50,16 +50,16 @@
 },
 {
   "postId" : 8,
-  "name" : "hot dog",
+  "name" : "evil dog",
   "price" : 100,
-  "image" : "hotdog.jpg",
+  "image" : "evil.jpg",
   "type" : "dog"
 },
 {
   "postId" : 9,
-  "name" : "cool cat",
+  "name" : "tom",
   "price" : 102,
-  "image" : "coolcat.jpg",
+  "image" : "tom.jpg",
   "type" : "cat"
 }
 

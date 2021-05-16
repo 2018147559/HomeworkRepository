@@ -5,23 +5,21 @@
 	<title>index html</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<script>
-		let counter = 1;
+		const end = 9;
 		fetch('product.json')
 		.then(function(response) {
 		 	return response.json();
 		})
+
 		.then(function(json) {
 		  let products = json;
 		  initialize(products);
 		})
 		.catch(function(err) {
-		  console.log('fetch problem!!');
+		  console.log('fetch problem!!' + err.message);
 		});
 
-		 window.onscroll = () => {
-		 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-			}
-		};
+
 
 		function initialize(products){
 			const category = document.querySelector('#category');
@@ -34,14 +32,16 @@
 			let lastSearch = '';
 
 //category filtering 결과 
-			let categoryGroup;
+			let categoryGroup = [];
 //searching 후 결과 시작은 전체 그룹임 
-			let fianlgroup = products;
-			updateDisplay();
-// 리셋 
-			categoryGroup = [];
-			fianlgroup = [];
+			let fianlgroup = [];
 
+			fianlgroup = products;
+			updateDisplay();
+// 리셋
+
+
+//버튼이 클릭됐을떄!
 			searchBtn.onclick = selectCategory;
 
 			function selectCategory(e){
@@ -89,6 +89,7 @@
 				}
 			}
 			function updateDisplay(){
+				let counter = 0;
 				while(main.firstChild){
 					main.removeChild(main.firstChild);
 				}
@@ -99,10 +100,24 @@
 					main.appendChild(para);
 				}
 				else{
-					for(let i = 0; i < fianlgroup.length; i++){
-						fetchBlob(fianlgroup[i]);
+					if(fianlgroup.length == 1){
+						fetchBlob(fianlgroup[0]);
+					}
+					else{
+						fetchBlob(fianlgroup[0]);
+						fetchBlob(fianlgroup[1]);
+						counter = 2;
 					}
 				}
+				window.onscroll = () => {
+				 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+					 	if(fianlgroup.length == counter) {return;}
+					 	else{
+					 		fetchBlob(fianlgroup[counter]);
+					 		counter++;
+					 	}
+					}
+				};
 			}
 			function fetchBlob(product){
 				let url = product.image;
@@ -137,19 +152,11 @@
 
 
 
-		//Add a new post with a given content
-		function add_post(product){
-			//creat new post
-			const post = document.createElement('div');
-			post.className = 'post';
-			post.innerHTML = product.price;
-			document.querySelector('#posts').append(post)
-			
-		}
+
 	</script>
 </head>
 <body>
-	<h1 class = "ani" >국밥이 조아~</h1>
+	<h1 class = "ani" >동물농장~</h1>
 	<span class="current">  메인페이지</span>
 	<a href="login.html">로그인</a>
 	<a href="signup.html">회원가입</a>
