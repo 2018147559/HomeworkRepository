@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<script>
 		let counter = 1;
-		fetch('products.json')
+		fetch('product.json')
 		.then(function(response) {
 		 	return response.json();
 		})
@@ -18,6 +18,10 @@
 		  console.log('fetch problem!!');
 		});
 
+		 window.onscroll = () => {
+		 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+			}
+		};
 
 		function initialize(products){
 			const category = document.querySelector('#category');
@@ -42,6 +46,7 @@
 
 			function selectCategory(e){
 
+				e.preventDefault();
 // 카테고리랑 검색 결과 놓는 것들 리셋 
 				categoryGroup = [];
 				fianlgroup = [];
@@ -76,7 +81,7 @@
 				else{
 					let lowerCaseSearchTerm = searchTerm.value.toLowerCase();
 					for(let i = 0; i < categoryGroup.length ; i++){
-						if(categoryGroup[i].name.indexof(lowerCaseSearchTerm) !== -1){
+						if(categoryGroup[i].name.indexOf(lowerCaseSearchTerm) !== -1){
 							fianlgroup.push(categoryGroup[i]);
 						}
 					}
@@ -104,15 +109,14 @@
 				fetch(url)
 				.then(response => response.blob())
 				.then(blob => {
-					let objectURL = URL.createObjectURL(blob);
-					showProduct(objectURL, product);
+					showProduct(url, product);
 				})
 			};
 			function showProduct(objectURL, product){
 				const section = document.createElement('section');
 				const heading = document.createElement('h3');
 				const para = document.createElement('p');
-				const iamge = document.createElement('img');
+				const image = document.createElement('img'); 
 
 				section.setAttribute('class', product.type);
 				heading.textContent = product.name.replace(product.name.charAt(0), product.name.charAt(0).toUpperCase());
@@ -121,18 +125,17 @@
 				image.alt = product.name;
 
 				main.appendChild(section);
-				section.appendChile(heading);
+				section.appendChild(heading);
 				section.appendChild(para);
-				section.appendChile(image);
+				section.appendChild(image);
+				section.addEventListener("click", clicked, false);
+			}
+			function clicked(e){
+				e.target.setAttribute("class", "picClicked");
 			}
 		}
 
 
-		// window.onscroll = () => {
-		// 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-		// 		// load();
-		// 	}
-		// };
 
 		//Add a new post with a given content
 		function add_post(product){

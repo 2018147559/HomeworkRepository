@@ -24,7 +24,7 @@
 		  width: 160px;
 		  position: absolute;
 		  right: 4%;
-		  z-index: 3000;
+		  z-index: 0;
 		  text-shadow: 2px 2px 1px black;
 		  line-height: 2rem;
 		  padding-top: 0.3rem;
@@ -50,9 +50,10 @@
 			height: 100%;
 		}
 		aside {
+			position: absolute;
+			height: 100%;
 			border-right : 6px solid black;
 			display: flex;
-			flex-flow: column;;
 			align-items: stretch;
 			flex: 3;
 			width: 300px;
@@ -69,7 +70,7 @@
 		select, input, button{
 			width: 100%
 		}
-		input{
+		input,select {
 			padding: 5px;
 			width: 201px;
 		}
@@ -80,25 +81,27 @@
 			border: none;
 		}
 		main {
-		  display: flex;
-		  flex-flow: row wrap;
-		  justify-content: space-around;
-		  flex: 7;
+		  position : absolute;
+		  left : 500px;
 		}
 
 		section {
-		  width: 45%;
-		  margin: 5px;
-		  background-color: black;
+		  width: 400px;
+		  margin: 20px;
 		  position: relative;
-		  height: 215px;
+		  height: 400px;
 		}
 
 		section img {
-		  width: 100%;
+		  width: 400px;
+		  height: 400px;
 		  display: block;
-		  position: absolute;
+		  position: relative;
 		  bottom: 0px;
+		  z-index: 2000;
+		}
+		.picClicked{
+			z-index: -20;
 		}
 
 		section p {
@@ -113,7 +116,7 @@
 		  position: absolute;
 		  right: 10px;
 		  bottom: -6px;
-		  z-index: 2000;
+		  z-index: 0;
 		}
 		.post{
 			background-color: red;
