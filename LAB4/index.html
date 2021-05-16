@@ -41,6 +41,8 @@
 			searchBtn.onclick = selectCategory;
 
 			function selectCategory(e){
+				//default 되는거 방지 
+				e.preventDefault()
 // 카테고리랑 검색 결과 놓는 것들 리셋 
 				categoryGroup = [];
 				fianlgroup = [];
@@ -100,15 +102,16 @@
 			}
 			function fetchBlob(product){
 				let url = product.image;
-				fetch(url).then(response => response.blob());
+				fetch(url)
+				.then(response => response.blob())
 				.then(blob => {
 					let objectURL = URL.createObjectURL(blob);
 					showProduct(objectURL, product);
-				});
-			}
+				})
+			};
 			function showProduct(objectURL, product){
 				const section = document.createElement('section');
-				const heading = document.createElement('h2');
+				const heading = document.createElement('h3');
 				const para = document.createElement('p');
 				const iamge = document.createElement('img');
 
@@ -126,12 +129,11 @@
 		}
 
 
-		document.addEventListener('DOMContentLoaded', load);
-		window.onscroll = () => {
-			if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-				// load();
-			}
-		};
+		// window.onscroll = () => {
+		// 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+		// 		// load();
+		// 	}
+		// };
 
 		//Add a new post with a given content
 		function add_post(product){

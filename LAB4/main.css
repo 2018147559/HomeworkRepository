@@ -17,10 +17,17 @@
 			border-style: solid;
 		}
 		h3{
-			border-width: 0px;
-			border-bottom-width : 1px;
-			border-color: black;
-			border-style: solid;
+		
+		  font-size: 2rem;
+		  color: yellow;
+		  text-align: right;
+		  width: 160px;
+		  position: absolute;
+		  right: 4%;
+		  z-index: 3000;
+		  text-shadow: 2px 2px 1px black;
+		  line-height: 2rem;
+		  padding-top: 0.3rem;
 		}
 		a{
 			text-decoration: none;
@@ -47,6 +54,8 @@
 			display: flex;
 			flex-flow: column;;
 			align-items: stretch;
+			flex: 3;
+			width: 300px;
 		}
 		aside div{
 			margin-bottom: 19px;
@@ -69,6 +78,42 @@
 			color: red;
 			padding: 5px 0;
 			border: none;
+		}
+		main {
+		  display: flex;
+		  flex-flow: row wrap;
+		  justify-content: space-around;
+		  flex: 7;
+		}
+
+		section {
+		  width: 45%;
+		  margin: 5px;
+		  background-color: black;
+		  position: relative;
+		  height: 215px;
+		}
+
+		section img {
+		  width: 100%;
+		  display: block;
+		  position: absolute;
+		  bottom: 0px;
+		}
+
+		section p {
+		  color: yellow;
+		  background: black;
+		  width: 50px;
+		  height: 50px;
+		  line-height: 50px;
+		  text-align: center;
+		  border-radius: 50%;
+		  box-shadow: 2px 2px 1px yellow;
+		  position: absolute;
+		  right: 10px;
+		  bottom: -6px;
+		  z-index: 2000;
 		}
 		.post{
 			background-color: red;
