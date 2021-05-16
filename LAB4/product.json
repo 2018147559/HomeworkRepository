@@ -15,38 +15,38 @@
   },
 {
   "postId" : 3,
-  "name" : "cool cat",
-  "price" : 102,
-  "image" : "coolcat.jpg",
-  "type" : "cat"
+  "name" : "mad dog",
+  "price" : 202,
+  "image" : "maddog.jpg",
+  "type" : "dog"
 },
 {
   "postId" : 4,
-  "name" : "hot dog",
-  "price" : 100,
-  "image" : "hotdog.jpg",
-  "type" : "dog"
+  "name" : "kit cat",
+  "price" : 200,
+  "image" : "kitkat.jpg",
+  "type" : "cat"
 },
 {
   "postId" : 5,
-  "name" : "cool cat",
-  "price" : 102,
-  "image" : "coolcat.jpg",
-  "type" : "cat"
-},
-{
-  "postId" : 6,
-  "name" : "hot dog",
-  "price" : 100,
-  "image" : "hotdog.jpg",
+  "name" : "doge",
+  "price" : 302,
+  "image" : "doge.jpg",
   "type" : "dog"
 },
 {
+  "postId" : 6,
+  "name" : "sad frog",
+  "price" : 400,
+  "image" : "pepe.jpg",
+  "type" : "frog"
+},
+{
   "postId" : 7,
-  "name" : "cool cat",
+  "name" : "happy frog",
   "price" : 102,
-  "image" : "coolcat.jpg",
-  "type" : "cat"
+  "image" : "happypepe.jpg",
+  "type" : "frog"
 },
 {
   "postId" : 8,
