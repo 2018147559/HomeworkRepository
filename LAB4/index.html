@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>index html</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script>
+		let counter = 1;
+		fetch('products.json')
+		.then(function(response) {
+		 	return response.json();
+		})
+		.then(function(json) {
+		  let products = json;
+		  initialize(products);
+		})
+		.catch(function(err) {
+		  console.log('fetch problem!!');
+		});
+
+
+		function initialize(products){
+			const category = document.querySelector('#category');
+			const searchTerm = document.querySelector('#searchTerm');
+			const searchBtn = document.querySelector('button');
+			const main = document.querySelector('main');
+//카테고리에 넣은 마지막 값이 무엇인지 
+			let lastCategory = category.value;
+//아직 검색값 ㄴㄴ 
+			let lastSearch = '';
+
+//category filtering 결과 
+			let categoryGroup;
+//searching 후 결과 시작은 전체 그룹임 
+			let fianlgroup = products;
+			updateDisplay();
+// 리셋 
+			categoryGroup = [];
+			fianlgroup = [];
+
+			searchBtn.onclick = selectCategory;
+
+			function selectCategory(e){
+
+// 카테고리랑 검색 결과 놓는 것들 리셋 
+				categoryGroup = [];
+				fianlgroup = [];
+				if(category.value === lastCategory && searchTerm.value === lastSearch){
+					return;
+				}
+				else{
+					lastCategory = category.value;
+					lastSearch = searchTerm.value;
+	//기본 all 이 골라지거나 이걸 눌렀을때 모든 json object 업데이트 
+					if(category.value === 'All'){
+						categoryGroup = products;
+						selectProducts();
+					}
+					else{
+						let lowerCaseType = category.value.toLowerCase();
+						for(let i = 0; i < products.length; i++){
+							if(products[i].type === lowerCaseType){
+								categoryGroup.push(products[i]);
+							}
+						}
+						selectProducts();
+					}
+				}
+			}
+			// selected 된 product들을 search로 한번 더 거름
+			function selectProducts(){
+				if(searchTerm.value === ''){
+					fianlgroup = categoryGroup;
+					updateDisplay();
+				}
+				else{
+					let lowerCaseSearchTerm = searchTerm.value.toLowerCase();
+					for(let i = 0; i < categoryGroup.length ; i++){
+						if(categoryGroup[i].name.indexof(lowerCaseSearchTerm) !== -1){
+							fianlgroup.push(categoryGroup[i]);
+						}
+					}
+					updateDisplay();
+				}
+			}
+			function updateDisplay(){
+				while(main.firstChild){
+					main.removeChild(main.firstChild);
+				}
+
+				if(fianlgroup.length === 0){
+					const para = document.createElement('p');
+					para.textContent = 'No results to display';
+					main.appendChild(para);
+				}
+				else{
+					for(let i = 0; i < fianlgroup.length; i++){
+						fetchBlob(fianlgroup[i]);
+					}
+				}
+			}
+			function fetchBlob(product){
+				let url = product.image;
+				fetch(url)
+				.then(response => response.blob())
+				.then(blob => {
+					let objectURL = URL.createObjectURL(blob);
+					showProduct(objectURL, product);
+				})
+			};
+			function showProduct(objectURL, product){
+				const section = document.createElement('section');
+				const heading = document.createElement('h3');
+				const para = document.createElement('p');
+				const iamge = document.createElement('img');
+
+				section.setAttribute('class', product.type);
+				heading.textContent = product.name.replace(product.name.charAt(0), product.name.charAt(0).toUpperCase());
+				para.textContent = '$' + product.price;
+				image.src = objectURL;
+				image.alt = product.name;
+
+				main.appendChild(section);
+				section.appendChile(heading);
+				section.appendChild(para);
+				section.appendChile(image);
+			}
+		}
+
+
+		// window.onscroll = () => {
+		// 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+		// 		// load();
+		// 	}
+		// };
+
+		//Add a new post with a given content
+		function add_post(product){
+			//creat new post
+			const post = document.createElement('div');
+			post.className = 'post';
+			post.innerHTML = product.price;
+			document.querySelector('#posts').append(post)
+			
+		}
+	</script>
+</head>
+<body>
+	<h1 class = "ani" >국밥이 조아~</h1>
+	<span class="current">  메인페이지</span>
+	<a href="login.html">로그인</a>
+	<a href="signup.html">회원가입</a>
+	<h2>HTML5</h2>
+	<div>
+		<aside>
+			<form>
+				<div>
+					<label> Choose a category:
+						<select id="category">
+							<option selected>All</option>
+							<option>Dog</option>
+							<option>Cat</option>
+							<option>Frog</option>
+						</select>
+					</label>
+				</div>
+				<div>
+					<label>Enter search term
+						<input type="text" id = "searchTerm" placeholder="ex)hot">
+					</label>
+				</div>
+				<div>
+					<button>Filter results</button>
+				</div>
+			</form>
+		</aside>
+		<main>
+			
+		</main>
+	</div>
+</body>
+</html>
